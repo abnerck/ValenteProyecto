@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Estilos para el formulario */
+    
+        .form-container {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        /* Estilos para las etiquetas de los campos */
+        .form-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        /* Estilos para los campos de entrada */
+        .form-control {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        /* Estilos para el botón */
+        .btn {
+            background-color: #c0d2e5;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 10px 20px;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background-color: #98a7b8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="form-container">
+            <h1>Formulario para crear usuario</h1>
+            <form action="/users/create/" method="post">
+                {% csrf_token %}
+                <label for="id_Nombres" class="form-label">Nombre</label>
+                <input type="text" name="Nombres" class="form-control" id="id_Nombres" required>
+    
+                <label for="id_aPaterno" class="form-label">Apellido Paterno</label>
+                <input type="text" name="aPaterno" class="form-control" id="id_aPaterno" required>
+                
+                <label for="id_aMaterno" class="form-label">Apellido Materno</label>
+                <input type="text" name="aMaterno" class="form-control" id="id_aMaterno" required>
+    
+                <label for="id_matricula" class="form-label">Matricula</label>
+                <input type="text" name="matricula" class="form-control" id="id_matricula" required>
+    
+                <label for="id_telefono" class="form-label">Telefono</label>
+                <input type="text" name="telefono" class="form-control" id="id_telefono" required>
+                
+                <label for="id_tipoU" class="form-label">Tipo de Usuario:</label>
+                <input type="text" name="tipoU" class="form-control" id="id_tipoU" required>
+                
+                <label for="id_correoE" class="form-label">Correo electronico</label>
+                <input type="email" name="correoE" class="form-control" id="id_correoE" required>
+                
+                <label for="id_contra" class="form-label">Contraseña:</label>
+                <input type="password" name="contra" class="form-control" id="id_contra" required>
+    
+                <button type="submit" class="btn">Guardar</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

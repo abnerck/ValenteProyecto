@@ -10,7 +10,7 @@ class Usuario(models.Model):
     matricula = models.CharField(max_length=50)
     telefono = models.CharField(max_length=50)
     tipoU = models.CharField(max_length=50)
-    correoE = models.CharField(max_length=50)
+    correoE = models.EmailField(max_length=50)
     contra = models.CharField(max_length=50)
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
 
