@@ -24,6 +24,37 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home,name='home'),
     
+    # Ruta que queremos que lleve / vista que creamos / Pagina html que esta vinculada
+    path('usuarios/',views.Users,name='usuarios'),
     path('users/create/', views.create_user,name='create_user'),
+    path('delete_user/<int:user_id>/', views.delete_user, name='delete_user'),
+    path('usuarios/update/<int:user_id>/', views.update_user, name='update_user'),
+
+    #PROGRAMA EDUCATIVO
+    path('ProgramaEducativo/', views.ProgramasEducativo, name='programaeducativo'),
+    path('programa/create/', views.create_programaeducativo, name='create_programaeducativo'),
+    path('delete_programaEducativo/<int:programa_id>/', views.delete_programaEducativo, name='delete_programaEducativo'),
+    path('update_programaEducativo/<int:programa_id>/', views.update_programaEducativo, name='update_programaEducativo'),
+
+    #ASIGNATURAS    
+    path('asignaturas/',views.asignaturas, name='asignaturas'),
+    path('asignatura/create/', views.create_asignatura, name='create_asignatura'),
+    path('delete_asignatura/<int:asignatura_id>/', views.delete_asignatura, name='delete_asignatura'),
+    path('update_asignatura/<int:asignatura_id>/', views.update_asignatura, name='update_asignatura'),
+
+    #CURSO
+    path('curso/',views.curso, name='cursos'),
+    path('curso/create/', views.create_curso, name='create_curso'),
+    path('delete_curso/<int:curso_id>/', views.delete_curso, name='delete_curso'),
+    path('update_curso/<int:curso_id>/', views.update_curso, name='update_curso'),
+
+    #EVIDENCIA
+    path('evidencia/',views.evidencia, name='evidencias'),
+    path('evidencia/create/', views.create_evidencia, name='create_evidencia'),
+    path('delete_evidencia/<int:evidencia_id>/', views.delete_evidencia, name='delete_evidencia'),
+    path('update_evidencia/<int:evidencia_id>/', views.update_evidencia , name='update_evidencia')
+
     
+
 ]
+

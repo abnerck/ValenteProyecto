@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios</title>
+</head>
+<body>
+    <a href="{% url 'create_user' %}" class="btn btn-danger mt-3">Crear Usuarios</a>
+    <a href="{% url 'home' %}" class="btn btn-danger mt-3">home</a>
+
+    <div class="container mt-4">
+
+        <h2 class="text-center">Lista de usuarios</h2>
+
+        <div class="table-responsive rounded">
+            <table id="tablaHerramientas" class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Matricula</th>
+                        <th>Telefono</th>
+                        <th>Tipo</th>
+                        <th>Correo</th>
+                        <th>Acciones</th>  <!-- Nuevo encabezado para la columna de acciones -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for usuario in usuarios %}
+                    <tr>
+                        <td>{{ usuario.Nombres }}</td>
+                        <td>{{ usuario.matricula }}</td>
+                        <td>{{ usuario.telefono }}</td>
+                        <td>{{ usuario.tipoU }}</td>
+                        <td>{{ usuario.correoE }}</td>
+                        <td>
+                            <!-- Botón para actualizar usuario -->
+                            <a href="{% url 'update_user' usuario.id %}" class="btn btn-primary">Actualizar</a>
+                            
+                            <!-- Formulario para eliminar usuario -->
+                            <form action="{% url 'delete_user' usuario.id %}" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Mensajes de éxito o error -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+    </div>
+</body>
+</html>

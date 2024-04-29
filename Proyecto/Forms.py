@@ -39,7 +39,7 @@ class GrupoForm (ModelForm):
 '''
 class ProgramaEducativoForm(ModelForm):
     class Meta:
-        model = ProgramaEducativo
+        model = programaEducativo
         fields=[ 'nombrePE','descrpcionPe','perfilIngreso','perfilEgreso' ]
         labels = {
             'nombrePE':'Nombre Proyecto Educativo',

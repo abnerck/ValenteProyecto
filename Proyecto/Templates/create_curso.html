@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Curso</title>
+    <style>
+        /* Estilos para el formulario */
+
+        body{
+            background-color: slategray;
+        }
+    
+        .form-container {
+            background-color: #237dc7;
+            padding: 20px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        /* Estilos para las etiquetas de los campos */
+        .form-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        /* Estilos para los campos de entrada */
+        .form-control {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        /* Estilos para el botón */
+        .btn {
+            background-color: #c0d2e5;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 10px 20px;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background-color: #98a7b8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="form-container">
+            <h1>Formulario para crear curso</h1>
+            <form action="/curso/create/" method="post">
+                {% csrf_token %}
+
+
+                
+                
+                <label for="id_idAsignatura" class="form-label">Nombre de la Asignatura</label>
+                <select name="idAsignatura" id="id_idAsignatura" class="form-control" required>
+                    <option value="">Seleccione</option> 
+                    {% for asignatura in asignaturas %}
+                        <option value="{{ asignatura.id }}">{{ asignatura.id }}</option>
+                    {% endfor %}
+                </select>
+                
+
+              <br>
+                <label for="id_idGrupo" class="form-label">Grupo</label>
+                <select name="idGrupo" id="id_idGrupo" class="form-control" required>
+                    <option value="">Seleccione</option> 
+                    {% for grupo in grupos %}
+                        <option value="{{ grupo.grupoLetra }}">{{ grupo.grupoLetra }}</option>
+                    {% endfor %}
+                </select>
+                <br><br>
+                
+                <label for="id_tipoCurso" class="form-label">Tipo de Curso</label>
+                <input type="text" name="tipoCurso" class="form-control" id="id_tipoCurso" required>
+                
+                <label for="id_fechainicio" class="form-label">Fecha de Inicio</label>
+                <input type="date" name="fechainicio" class="form-control" id="id_fechainicio" required>
+                
+                <label for="id_fechaFin" class="form-label">Fecha de Fin</label>
+                <input type="date" name="fechaFin" class="form-control" id="id_fechaFin" required>
+                  
+                <button type="submit" class="btn">Guardar</button>
+                <a href="{% url 'cursos' %}" class="btn">Volver a Cursos</a>
+         
+
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

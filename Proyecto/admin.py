@@ -7,7 +7,7 @@ from .models import *
 admin.site.register(Usuario)
 admin.site.register(Grupo)
 admin.site.register(asignacionAlumno)
-admin.site.register(ProgramaEducativo)
+admin.site.register(programaEducativo)
 admin.site.register(Asignatura)
 admin.site.register(Curso)
 admin.site.register(Evidencia)

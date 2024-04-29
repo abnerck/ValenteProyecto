@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso</title>
+</head>
+<body>
+    <a href="{% url 'create_curso' %}" class="btn btn-danger mt-3">Crear curso</a>
+    <a href="{% url 'home' %}" class="btn btn-danger mt-3">home</a>
+
+    <div class="container mt-4">
+
+        <h2 class="text-center">Lista de cursos</h2>
+
+        <div class="table-responsive rounded">
+            <table id="tablaHerramientas" class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Asignratura</th>
+                        <th>Grupo</th>
+                        <th>Tipo Curso</th>
+                        <th>Fecha Inicio</th>                        
+                        <th>Fecha final</th>
+                        <th>Acciones</th>  <!-- Nuevo encabezado para la columna de acciones -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for curso in curso %}
+                    <tr>
+                        <td>{{ curso.idAsignatura }}</td>
+                        <td>{{ curso.idGrupo }}</td>
+                        <td>{{ curso.tipoCurso }}</td>
+                        <td>{{ curso.fechainicio}}</td>
+                        <td>{{ curso.fechaFin}}</td>
+                        
+                        <td>
+                            <!-- Botón para actualizar usuario -->
+                            <a href="{% url 'update_curso' curso.id %}" class="btn btn-primary">Actualizar</a>
+                            
+                            <!-- Formulario para eliminar usuario -->
+                            <form action="{% url 'delete_curso' curso.id %}" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Mensajes de éxito o error -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+    </div>
+</body>
+</html>

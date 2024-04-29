@@ -25,7 +25,7 @@ class asignacionAlumno(models.Model):
     idUsuario =models.ForeignKey(Usuario,on_delete=models.CASCADE,blank=True,null=True,)
 
 
-class ProgramaEducativo(models.Model):
+class programaEducativo(models.Model):
     nombrePE = models.TextField(max_length=200)
     descrpcionPe = models.TextField(max_length=200)
     perfilIngreso = models.TextField(max_length=200)
@@ -34,7 +34,7 @@ class ProgramaEducativo(models.Model):
 class Asignatura(models.Model):
      nombreAsignatura = models.CharField(max_length=100)
      descripcionAsignatura = models.CharField(max_length=100)
-     idProgramaEducativo = models.ForeignKey(ProgramaEducativo,on_delete=models.CASCADE,blank=True,null=True,)
+     idProgramaEducativo = models.ForeignKey(programaEducativo,on_delete=models.CASCADE,blank=True,null=True,)
 
 
 class Curso(models.Model):

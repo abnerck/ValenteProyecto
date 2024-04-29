@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evidencias</title>
+</head>
+<body>
+    <a href="{% url 'create_evidencia' %}" class="btn btn-danger mt-3">Crear Evidencias</a>
+    <a href="{% url 'home' %}" class="btn btn-danger mt-3">home</a>
+
+    <div class="container mt-4">
+
+        <h2 class="text-center">Lista de EVIDENCIAS</h2>
+
+        <div class="table-responsive rounded">
+            <table id="tablaHerramientas" class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th>Anexo</th>
+                        <th>Curso</th>                        
+                        <th>Tipo Evidencia</th>
+                        <th>Acciones</th>  <!-- Nuevo encabezado para la columna de acciones -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for evidencia in evidencias %}
+                    <tr>
+                        <td>{{ evidencia.nombreEvidencia }}</td>
+                        <td>{{ evidencia.descripcion }}</td>
+                        <td>{{ evidencia.anexo }}</td>
+                        <td>{{ evidencia.idCurso}}</td>
+                        <td>{{ evidencia.tipoEvidencia}}</td>
+                        
+                        <td>
+                            <!-- Botón para actualizar usuario -->
+                            <a href="{% url 'update_evidencia' evidencia.id %}" class="btn btn-primary">Actualizar</a>
+                            
+                            <!-- Formulario para eliminar usuario -->
+                            <form action="{% url 'delete_evidencia' evidencia.id %}" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Mensajes de éxito o error -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+    </div>
+</body>
+</html>

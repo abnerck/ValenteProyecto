@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa Educativo</title>
+    <style>
+        /* Estilos para el formulario */
+
+        body{
+            background-color: slategray;
+        }
+    
+        .form-container {
+            background-color: #237dc7;
+            padding: 20px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        /* Estilos para las etiquetas de los campos */
+        .form-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        /* Estilos para los campos de entrada */
+        .form-control {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        /* Estilos para el botón */
+        .btn {
+            background-color: #c0d2e5;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 10px 20px;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background-color: #98a7b8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="form-container">
+            <h1>Formulario para crear programa educativo</h1>
+            <form action="/programa/create/" method="post">
+                {% csrf_token %}
+                <label for="id_nombrePe" class="form-label">Nombre Programa Educativo</label>
+                <input type="text" name="nombrePE" class="form-control" id="id_nombrePE" required>
+                
+                <label for="id_descrpcionPe" class="form-label">Descripcion</label>
+                <input type="text" name="descrpcionPe" class="form-control" id="id_descrpcionPe" required>
+
+                <label for="id_perfilIngreso" class="form-label">Perfil Ingreso</label>
+                <input type="text" name="perfilIngreso" class="form-control" id="id_perfilIngreso" required>
+    
+                <label for="id_perfilEgreso" class="form-label">Perfil Egreso</label>
+                <input type="text" name="perfilEgreso" class="form-control" id="id_perfilEgreso" required>
+    
+               
+                <button type="submit" class="btn">Guardar</button>
+                <a href="{% url 'programaeducativo' %}" class="btn">Volver a programas educativos</a>
+
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

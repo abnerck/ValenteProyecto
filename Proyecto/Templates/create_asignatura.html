@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Asignatura</title>
+    <style>
+        /* Estilos para el formulario */
+
+        body{
+            background-color: slategray;
+        }
+    
+        .form-container {
+            background-color: #237dc7;
+            padding: 20px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        /* Estilos para las etiquetas de los campos */
+        .form-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        /* Estilos para los campos de entrada */
+        .form-control {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        /* Estilos para el botón */
+        .btn {
+            background-color: #c0d2e5;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 10px 20px;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background-color: #98a7b8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="form-container">
+            <h1>Formulario para crear asignatura</h1>
+            <form action="/asignatura/create/" method="post">
+                {% csrf_token %}
+                <label for="id_nombreAsignatura" class="form-label">Nombre asignatura</label>
+                <input type="text" name="nombreAsignatura" class="form-control" id="id_nombreAsignatura" required>
+                
+                <label for="id_descripcionAsignatura" class="form-label">Descripcion</label>
+                <input type="text" name="descripcionAsignatura" class="form-control" id="id_descripcionAsignatura" required>
+
+                <label for="id_ProgramaEducativo" class="form-label">Perfil Ingreso</label>
+                <input type="text" name="ProgramaEducativo" class="form-control" id="id_ProgramaEducativo" required>
+    
+               
+                <button type="submit" class="btn">Guardar</button>
+                <a href="{% url 'asignaturas' %}" class="btn">Volver asignaturas</a>
+
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

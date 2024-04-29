@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Evidencias</title>
     <style>
         /* Estilos para el formulario */
     
@@ -56,35 +56,29 @@
 
     <div class="container">
         <div class="form-container">
-            <h1>Formulario para crear usuario</h1>
-            <form action="/users/create/" method="post">
+            <h1>Formulario para crear Evidencias</h1>
+            <form action="/evidencia/create/" method="post">
                 {% csrf_token %}
-                <label for="id_Nombres" class="form-label">Nombre</label>
-                <input type="text" name="Nombres" class="form-control" id="id_Nombres" required>
+
+                {{ form.as_p }}
+
+                <label for="id_nombreEvidencia" class="form-label">Nombre evidencia</label>
+                <input type="text" name="nombreEvidencia" class="form-control" id="id_nombreEvidencia" required>
     
-                <label for="id_aPaterno" class="form-label">Apellido Paterno</label>
-                <input type="text" name="aPaterno" class="form-control" id="id_aPaterno" required>
+                <label for="id_descripcion" class="form-label">Descripcion</label>
+                <input type="text" name="descripcion" class="form-control" id="id_descripcion" required>
                 
-                <label for="id_aMaterno" class="form-label">Apellido Materno</label>
-                <input type="text" name="aMaterno" class="form-control" id="id_aMaterno" required>
+                <label for="id_anexo" class="form-label">Anexo</label>
+                <input type="file" name="anexo" class="form-control" id="id_anexo" required>
     
-                <label for="id_matricula" class="form-label">Matricula</label>
-                <input type="text" name="matricula" class="form-control" id="id_matricula" required>
+                <label for="id_idCurso" class="form-label">Curso</label>
+                <input type="text" name="idCurso" class="form-control" id="id_idCurso" required>
     
-                <label for="id_telefono" class="form-label">Telefono</label>
-                <input type="text" name="telefono" class="form-control" id="id_telefono" required>
+                <label for="id_tipoEvidencia" class="form-label">Tipo</label>
+                <input type="text" name="tipoEvidencia" class="form-control" id="id_tipoEvidencia" required>
                 
-                <label for="id_tipoU" class="form-label">Tipo de Usuario:</label>
-                <input type="text" name="tipoU" class="form-control" id="id_tipoU" required>
-                
-                <label for="id_correoE" class="form-label">Correo electronico</label>
-                <input type="email" name="correoE" class="form-control" id="id_correoE" required>
-                
-                <label for="id_contra" class="form-label">Contraseña:</label>
-                <input type="password" name="contra" class="form-control" id="id_contra" required>
-    
                 <button type="submit" class="btn">Guardar</button>
-                <a href="{% url 'usuarios' %}" class="btn">Volver a usuarios</a>
+                <a href="{% url 'evidencias' %}" class="btn">Volver a Evidencias</a>
 
             </form>
         </div>
