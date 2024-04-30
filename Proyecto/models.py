@@ -53,9 +53,9 @@ class Evidencia ( models.Model):
     tipoEvidencia = models.CharField(max_length=100)
 
 class asignacionEvidencia(models.Model):
-        idEvidencia = models.ForeignKey(Evidencia,on_delete=models.CASCADE,blank=True,null=True,)
-        idGrupo = models.ForeignKey(Grupo,on_delete=models.CASCADE,blank=True,null=True,)
-        fechaEntrega = models.DateField(blank=True,null=True)
+    idEvidencia = models.ForeignKey(Evidencia,on_delete=models.CASCADE,blank=True,null=True,)
+    idGrupo = models.ForeignKey(Grupo,on_delete=models.CASCADE,blank=True,null=True,)
+    fechaEntrega = models.DateField(blank=True,null=True)
 
 class evidenciaEntregada(models.Model):
     idasignacionEvidencia = models.ForeignKey(asignacionEvidencia,on_delete=models.CASCADE,blank=True,null=True,)

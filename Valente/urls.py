@@ -24,12 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home,name='home'),
     
-    # Ruta que queremos que lleve / vista que creamos / Pagina html que esta vinculada
-    path('usuarios/',views.Users,name='usuarios'),
-    path('users/create/', views.create_user,name='create_user'),
-    path('delete_user/<int:user_id>/', views.delete_user, name='delete_user'),
-    path('usuarios/update/<int:user_id>/', views.update_user, name='update_user'),
-
+ 
     #PROGRAMA EDUCATIVO
     path('ProgramaEducativo/', views.ProgramasEducativo, name='programaeducativo'),
     path('programa/create/', views.create_programaeducativo, name='create_programaeducativo'),
@@ -48,11 +43,26 @@ urlpatterns = [
     path('delete_curso/<int:curso_id>/', views.delete_curso, name='delete_curso'),
     path('update_curso/<int:curso_id>/', views.update_curso, name='update_curso'),
 
+       # Ruta que queremos que lleve / vista que creamos / Pagina html que esta vinculada
+    path('usuarios/',views.Users,name='usuarios'),
+    path('users/create/', views.create_user,name='create_user'),
+    path('delete_user/<int:user_id>/', views.delete_user, name='delete_user'),
+    path('usuarios/update/<int:user_id>/', views.update_user, name='update_user'),
+
+
     #EVIDENCIA
     path('evidencia/',views.evidencia, name='evidencias'),
-    path('evidencia/create/', views.create_evidencia, name='create_evidencia'),
+    path('evidencias/create/', views.create_evidencia, name='create_evidencia'),
     path('delete_evidencia/<int:evidencia_id>/', views.delete_evidencia, name='delete_evidencia'),
-    path('update_evidencia/<int:evidencia_id>/', views.update_evidencia , name='update_evidencia')
+    path('update_evidencia/<int:evidencia_id>/', views.update_evidencia , name='update_evidencia'),
+
+    #GRUPO
+    path('grupos/',views.grupos, name='grupos'),
+    path('grupos/create/', views.create_grupo, name='create_grupo'),
+    path('delete_grupo/<int:grupo_id>/', views.delete_grupo, name='delete_grupo'),
+    path('update_grupo/<int:grupo_id>/', views.update_grupo , name='update_grupo')
+
+
 
     
 

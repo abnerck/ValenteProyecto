@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo</title>
+</head>
+<body>
+    <a href="{% url 'create_grupo' %}" class="btn btn-danger mt-3">Crear Grupo</a>
+    <a href="{% url 'home' %}" class="btn btn-danger mt-3">home</a>
+
+    <div class="container mt-4">
+
+        <h2 class="text-center">Lista de grupos</h2>
+
+        <div class="table-responsive rounded">
+            <table id="tablaHerramientas" class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Programa Educativo</th>
+                        <th>cuatrimestre</th>
+                        <th>Grupo</th>
+                        
+                        <th>Acciones</th>  <!-- Nuevo encabezado para la columna de acciones -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for Grupo in grupos %}
+                    <tr>
+                        <td>{{ Grupo.idProgramaEducativo }}</td>
+                        <td>{{ Grupo.cuatrimestre }}</td>
+                        <td>{{ Grupo.grupoLetra }}</td>
+                       
+                        <td>
+                            <!-- Botón para actualizar usuario -->
+                            <a href="{% url 'update_grupo' Grupo.id %}" class="btn btn-primary">Actualizar</a>
+                            
+                            <!-- Formulario para eliminar usuario -->
+                            <form action="{% url 'delete_grupo' Grupo.id %}" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>         
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Mensajes de éxito o error -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+    </div>
+</body>
+</html>

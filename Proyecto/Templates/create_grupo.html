@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evidencias</title>
+    <title>GRUPO</title>
     <style>
         /* Estilos para el formulario */
     
@@ -56,28 +56,22 @@
 
     <div class="container">
         <div class="form-container">
-            <h1>Formulario para crear Evidencias</h1>
-            <form action="/evidencias/create/" method="post">
+            <h1>Formulario para crear GRUPO</h1>
+            <form action="/grupos/create/" method="post">
                 {% csrf_token %}
-
-                
-                <label for="id_nombreEvidencia" class="form-label">Nombre evidencia</label>
-                <input type="text" name="nombreEvidencia" class="form-control" id="id_nombreEvidencia" required>
+                <label for="id_idProgramaEducativo" class="form-label">Programa Educativo</label>
+                <input type="number" name="idProgramaEducativo" class="form-control" id="id_idProgramaEducativo" required>
     
-                <label for="id_descripcion" class="form-label">Descripcion</label>
-                <input type="text" name="descripcion" class="form-control" id="id_descripcion" required>
+                <label for="id_cuatrimestre" class="form-label">Cuatrimestre</label>
+                <input type="number" name="cuatrimestre" class="form-control" id="id_cuatrimestre" required>
                 
-                <label for="id_anexo" class="form-label">Anexo</label>
-                <input type="file" name="anexo" class="form-control" id="id_anexo" required>
+                <label for="id_grupoLetra" class="form-label">Grupo(letra)</label>
+                <input type="text" name="grupoLetra" class="form-control" id="id_grupoLetra" required>
     
-                <label for="id_idCurso" class="form-label">Curso</label>
-                <input type="text" name="idCurso" class="form-control" id="id_idCurso" required>
-    
-                <label for="id_tipoEvidencia" class="form-label">Tipo</label>
-                <input type="text" name="tipoEvidencia" class="form-control" id="id_tipoEvidencia" required>
                 
+    
                 <button type="submit" class="btn">Guardar</button>
-                <a href="{% url 'evidencias' %}" class="btn">Volver a Evidencias</a>
+                <a href="{% url 'grupos' %}" class="btn">Volver a Grupos</a>
 
             </form>
         </div>

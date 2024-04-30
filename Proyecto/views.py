@@ -108,7 +108,7 @@ def create_asignatura(request):
             # Guarda el usuario u realiza cualquier otra acción necesaria
             form.save()
             # Redirige a alguna página de éxito o a donde desees
-            return redirect('asignatura')  # Cambia 'home' al nombre de tu URL de inicio
+            return redirect('asignaturas')  # Cambia 'home' al nombre de tu URL de inicio
 
     else:
         # Si el formulario no ha sido enviado, crea una instancia del formulario vacío
@@ -202,6 +202,9 @@ def create_evidencia(request):
     # Renderiza la plantilla con el formulario como contexto
     return render(request, 'create_evidencia.html', {'form': form})
 
+
+
+
 def delete_evidencia(request, evidencia_id):
     evidencia = get_object_or_404(Evidencia, pk=evidencia_id)
     evidencia.delete()
@@ -218,3 +221,49 @@ def update_evidencia(request, evidencia_id):
     else:
         form = AsignaturaForm(instance=evidencia)
     return render(request, 'update_evidencia.html', {'form': form})
+
+
+#GRUPO
+
+def grupos(request):
+    grupos = Grupo.objects.all()
+
+    return render(request, 'grupos.html', {'grupos': grupos})
+
+def create_grupo(request):
+    
+    if request.method == 'POST':
+        # Si el formulario ha sido enviado, procesa los datos del formulario
+        form = GrupoForm(request.POST)
+        if form.is_valid():
+            # Guarda el usuario u realiza cualquier otra acción necesaria
+            form.save()
+            # Redirige a alguna página de éxito o a donde desees
+            return redirect('grupos')  # Cambia 'home' al nombre de tu URL de inicio
+
+    else:
+        # Si el formulario no ha sido enviado, crea una instancia del formulario vacío
+        form = GrupoForm()
+
+    # Renderiza la plantilla con el formulario como contexto
+    return render(request, 'create_grupo.html', {'form': form})
+
+def delete_grupo(request, grupo_id):
+    grupos = get_object_or_404(Grupo, pk=grupo_id)
+    grupos.delete()
+    return redirect(reverse('grupos'))
+
+
+
+
+def update_grupo(request, grupo_id):
+    grupo = get_object_or_404(Grupo, pk=grupo_id)
+    if request.method == 'POST':
+        form = GrupoForm(request.POST, instance=grupo)
+        if form.is_valid():
+            form.save()
+            # Redireccionar a alguna página de éxito o mostrar un mensaje de éxito
+            return redirect('grupos')
+    else:
+        form = GrupoForm(instance=grupo)
+    return render(request, 'update_grupo.html', {'form': form})
